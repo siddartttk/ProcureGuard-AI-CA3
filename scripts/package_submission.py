@@ -11,7 +11,8 @@ FOLDERS=['procureguard','data','tests','.streamlit']
 TOP=['app.py','README.md','requirements.txt','requirements-tested.txt','pytest.ini','launch_demo.ps1','setup.ps1','START_DEMO.cmd','.gitignore']
 DOCS=['agents_and_orchestration.md','architecture_overview.png','architecture.mmd','architecture.png',
       'architecture.svg','domain_analysis.md','final_verification.md','problem_statement.md',
-      'problem_statement.pdf','ProcureGuard_AI_CA3_Report.docx','requirements_traceability.md','technical_explanation.md','upgrade_plan.md','validation_report.md']
+      'problem_statement.pdf','ProcureGuard_AI_CA3_Report.docx','requirements_traceability.md','technical_explanation.md','upgrade_plan.md','validation_report.md',
+      'assets/sit_pune_official_logo.png','assets/logo_source.json']
 REPORTS=['browser_smoke.json','docx_validation.json','environment-freeze.txt','evolving_case_demo.json','investigation_packets.json',
          'live_planner_run.json','presentation_validation.json','pytest-output.txt','pytest-results.xml',
          'scenario_comparison.csv','validation_v2.json','validation_v3.json']

@@ -1,10 +1,15 @@
 {
-  "verified_at": "2026-10-19T17:28:18.390368+00:00",
+  "verified_at": "2026-10-19T17:39:43.559023+00:00",
   "file": "docs/ProcureGuard_AI_CA3_Report.docx",
-  "sha256": "276b6cdcb7fc087f79b4fb37834764dd8d8cd526cff8c39652fab7499979dc22",
+  "sha256": "9461fc5bbd0e77c7ab8e1489f14e1b21131e23cb02dc33665367292f829411f8",
   "rendered_pages": 6,
   "all_pages_visually_reviewed": true,
   "renderer": "LibreOffice 26.8.1.1 via documents render_docx.py",
   "package_integrity": "pass",
-  "boundary": "Rendered page review and DOCX package checks. Native Microsoft Word was not executed."
+  "boundary": "Rendered page review and DOCX package checks. Native Microsoft Word was not executed.",
+  "official_logo_embedded": true,
+  "logo_provenance": "docs/assets/logo_source.json",
+  "github_hyperlink": "https://github.com/siddartttk/ProcureGuard-AI-CA3",
+  "docx_hyperlink_verified": true,
+  "rendered_pdf_hyperlink_verified": true
 }

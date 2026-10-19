@@ -7,6 +7,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
+from docx.opc.constants import RELATIONSHIP_TYPE as RT
 
 ROOT = Path(__file__).resolve().parents[1]
 r = json.loads((ROOT/'reports/validation_v3.json').read_text(encoding='utf-8'))
@@ -53,7 +54,9 @@ for run in footer.runs: run.font.size = Pt(9)
 
 def p(text): return d.add_paragraph(text)
 def h(text, level=1): return d.add_heading(text, level)
-def page(title): d.add_page_break(); h(title)
+def page(title):
+    heading=h(title)
+    heading.paragraph_format.page_break_before=True
 def table(headers, rows, widths):
     t = d.add_table(rows=1, cols=len(headers)); t.alignment=WD_TABLE_ALIGNMENT.CENTER
     t.autofit=False
@@ -87,10 +90,32 @@ def table(headers, rows, widths):
     d.add_paragraph().paragraph_format.space_after=Pt(2)
     return t
 
+brand=d.add_paragraph()
+brand.alignment=WD_ALIGN_PARAGRAPH.CENTER
+brand.paragraph_format.space_after=Pt(4)
+logo=brand.add_run().add_picture(str(ROOT/'docs/assets/sit_pune_official_logo.png'),width=Inches(6.0))
+logo._inline.docPr.set('descr','Symbiosis Institute of Technology official logo and institution name')
 d.add_paragraph('ProcureGuard AI CA3 Project Report', 'Title')
 d.add_paragraph('Agentic invoice exception resolution', 'Subtitle')
-p('Prepared for the CA3 project submission\nAIML C, Symbiosis Institute of Technology Pune\n19 October 2026')
+p('CA3 project submission  |  AIML C  |  19 October 2026')
+repository=d.add_paragraph()
+repository.paragraph_format.space_after=Pt(8)
+label=repository.add_run('GitHub repository  ')
+label.bold=True;label.font.size=Pt(10)
+link=OxmlElement('w:hyperlink')
+link.set(qn('r:id'),repository.part.relate_to('https://github.com/siddartttk/ProcureGuard-AI-CA3',RT.HYPERLINK,is_external=True))
+link_run=OxmlElement('w:r');properties=OxmlElement('w:rPr')
+color=OxmlElement('w:color');color.set(qn('w:val'),'0563C1');properties.append(color)
+underline=OxmlElement('w:u');underline.set(qn('w:val'),'single');properties.append(underline)
+size=OxmlElement('w:sz');size.set(qn('w:val'),'20');properties.append(size)
+link_run.append(properties)
+link_text=OxmlElement('w:t');link_text.text='https://github.com/siddartttk/ProcureGuard-AI-CA3'
+link_run.append(link_text);link.append(link_run);repository._p.append(link)
 table(['Student','PRN'], [('Rishi Dwivedi','24070126152'),('Siddarth Singh Kushwah','24070126174')], [4.3,2.6])
+team_spacer=d.paragraphs[-1]
+team_spacer.paragraph_format.space_after=Pt(0)
+team_spacer.paragraph_format.line_spacing=Pt(2)
+team_spacer.add_run().font.size=Pt(2)
 h('Project summary')
 p('ProcureGuard AI is a working Python and Streamlit proof of concept for investigating invoice exceptions. It selects relevant evidence, validates the source, repeats accounting checks and saves a traceable recommendation for human review. The application remains usable without a language model or network after its dependencies are installed.')
 p('The project addresses the work that follows an invoice mismatch. An accounts payable reviewer must establish whether a receipt exists, a price amendment was approved or supplier bank details are authoritative. Those facts belong to different owners. Missing or conflicting records can otherwise lead to repeated handoffs or an unsupported recommendation.')
