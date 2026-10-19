@@ -1,0 +1,41 @@
+flowchart TB
+  UI[Streamlit case workbench] --> CSV[(Operational CSV: invoices, PO, receipts, vendors)]
+  CSV --> Match[Matching agent: schema, links, Decimal, cumulative capacity]
+  Match --> Risk[Risk agent: retained screening and compound assessment]
+  Risk --> Critic[Independent critic: separate accounting recomputation]
+  Critic --> Gate{Verified and remaining evidence gap?}
+  Gate -->|yes; untried tool and budget| Planner[Planner: offline mock or local Ollama]
+  Planner --> Allow{JSON contract and tool allowlist}
+  Allow -->|invalid or unavailable| Fallback[Visible offline fallback]
+  Fallback --> Executor
+  Allow -->|valid| Executor[Evidence agent]
+  Sources[(Warehouse, procurement and vendor-master adapters)] --> Executor
+  Manifest[(Trusted local manifest: pinned SHA-256)] --> Verify[Hash, authority, approval, date and scope checks]
+  Executor --> Verify
+  Verify -->|accepted| Snapshot[Atomic effective snapshot update; invoice immutable]
+  Snapshot --> Match
+  Verify -->|missing| Planner
+  Verify -->|rejected or conflicting| Hold[Block and request human resolution]
+  Gate -->|done, no tool or budget exhausted| Decision[Decision coordinator]
+  Hold --> Decision
+  Critic -->|one bounded accounting recheck| Match
+  Decision --> Outcome{Ready for human review / hold / insufficient data}
+  Outcome --> Human[Human review simulation: role, rationale, expected revision]
+  Human --> Store[(SQLite cases, snapshots, idempotency and hash-linked events)]
+  Decision --> Store
+  Store --> UI
+  Store --> Recover[Reopen packet only if original source hash matches]
+  Recover --> UI
+  Human --> Lifecycle[Classify submitted / recorded / inactive with rationale]
+  Lifecycle --> Ledger[(Persisted lifecycle overlay: capacity obligations)]
+  Ledger --> Match
+  Lifecycle --> Invalidate[Invalidate stale recommendations across sessions]
+  Invalidate --> UI
+  State[(Shared state: source/effective snapshots, findings, evidence, plan, trace)] -.-> Planner
+  State -.-> Critic
+  Key[(Separate answer key)] --> Evaluation[Tests and scenario comparison only]
+  Challenge[(Frozen 25-case development challenge)] --> Evaluation
+  Live[Recorded actual local-model requests and responses] --> Evaluation
+  Store --> Evaluation
+  Evaluation --> Results[Executed validation report]
+  Results --> UI

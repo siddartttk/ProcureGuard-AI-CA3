@@ -1,0 +1,42 @@
+{
+  "PG101": {
+    "title": "The missing delivery",
+    "description": "A receipt exists in the warehouse, but has not reached accounts payable."
+  },
+  "PG102": {
+    "title": "The approved amendment",
+    "description": "A legitimate price change is held until procurement authority is retrieved."
+  },
+  "PG103": {
+    "title": "Two gaps, one case",
+    "description": "A price amendment and a delivery record must both be obtained."
+  },
+  "PG104": {
+    "title": "Evidence arrives later",
+    "description": "A reviewer requests a recheck; a delayed receipt then becomes available."
+  },
+  "PG105": {
+    "title": "The receipt reuse trap",
+    "description": "Two distinct invoices together exceed the delivered and ordered quantity."
+  },
+  "PG106": {
+    "title": "The poisoned attachment",
+    "description": "A receipt was changed after its content hash was pinned."
+  },
+  "PG107": {
+    "title": "Conflicting authority",
+    "description": "Two approved amendments disagree; the agent must escalate."
+  },
+  "PG108": {
+    "title": "The tolerance trap",
+    "description": "A tiny unit difference doubles the total line exposure."
+  },
+  "PG109": {
+    "title": "Verified bank change",
+    "description": "A bank change needs an authorised vendor-master record, never invoice text."
+  },
+  "PG110": {
+    "title": "Unresolved delivery",
+    "description": "No authoritative receipt exists; the system must preserve the evidence gap."
+  }
+}

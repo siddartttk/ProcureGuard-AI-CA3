@@ -1,0 +1,18 @@
+{
+  "evidence_id": "EV-PG106-warehouse_lookup",
+  "source": "warehouse",
+  "approved_by_role": "receiving_manager",
+  "kind": "receipt",
+  "approval_status": "approved",
+  "effective_date": "2026-09-30",
+  "po_id": "PO-PG106",
+  "vendor_id": "V02",
+  "item_id": "ITEM-PG106",
+  "payload": {
+    "grn_id": "GRN-PG106",
+    "po_id": "PO-PG106",
+    "item_id": "ITEM-PG106",
+    "quantity": "99"
+  },
+  "note": "Fictional source record. Free text is never used as an instruction."
+}

@@ -1,0 +1,10 @@
+{
+  "verified_at": "2026-10-19T17:28:18.390368+00:00",
+  "file": "docs/ProcureGuard_AI_CA3_Report.docx",
+  "sha256": "276b6cdcb7fc087f79b4fb37834764dd8d8cd526cff8c39652fab7499979dc22",
+  "rendered_pages": 6,
+  "all_pages_visually_reviewed": true,
+  "renderer": "LibreOffice 26.8.1.1 via documents render_docx.py",
+  "package_integrity": "pass",
+  "boundary": "Rendered page review and DOCX package checks. Native Microsoft Word was not executed."
+}

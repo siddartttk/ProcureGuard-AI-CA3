@@ -1,0 +1,20 @@
+{
+  "captured_at": "2026-10-19T17:16:28.631Z",
+  "screenshots": 10,
+  "captures": [
+    "01_command_center.png",
+    "02_resolved_case.png",
+    "03_adaptive_plan.png",
+    "04_provenance.png",
+    "09_recovered_case.png",
+    "07_lifecycle.png",
+    "08_revalidated_allocation.png",
+    "05_controls.png",
+    "06_validation.png",
+    "10_challenge_comparison.png"
+  ],
+  "recovery_verified": true,
+  "lifecycle_transition_verified": true,
+  "streamlit_exceptions": 0,
+  "consoleErrors": []
+}

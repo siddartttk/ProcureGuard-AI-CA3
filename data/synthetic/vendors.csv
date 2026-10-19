@@ -1,0 +1,6 @@
+vendor_id,name,status,bank_token
+V01,Fictional Aster Supplies,active,DEMO-BANK-01
+V02,Fictional Cobalt Supplies,active,DEMO-BANK-02
+V03,Fictional Juniper Supplies,active,DEMO-BANK-03
+V04,Fictional Mistral Supplies,inactive,DEMO-BANK-04
+V-PG109,Fictional Cobalt Supplies,active,DEMO-BANK-02

@@ -1,0 +1,74 @@
+[
+  {
+    "evidence_id": "EV-PG101-warehouse_lookup",
+    "tool": "warehouse_lookup",
+    "po_id": "PO-PG101",
+    "file": "EV-PG101-warehouse_lookup.json",
+    "sha256": "abd0a19fb5911131039cbbbd3ada5f4dc4bea011e48d087820b80789a2086556",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG102-amendment_lookup",
+    "tool": "amendment_lookup",
+    "po_id": "PO-PG102",
+    "file": "EV-PG102-amendment_lookup.json",
+    "sha256": "8c50dd40156a4fd5abb2a3244486452a7254f81e4ea7f76b34ea5e64a510b0a2",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG103-warehouse_lookup",
+    "tool": "warehouse_lookup",
+    "po_id": "PO-PG103",
+    "file": "EV-PG103-warehouse_lookup.json",
+    "sha256": "d6dcf35bfea0d25f529f00aee78066f836f0c4ecd9726af40ef684ea59314010",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG103-amendment_lookup",
+    "tool": "amendment_lookup",
+    "po_id": "PO-PG103",
+    "file": "EV-PG103-amendment_lookup.json",
+    "sha256": "c0e000082e56fb2626d99147b34eeb8763920bf7a2c59db38c6617580de72dbf",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG104-warehouse_lookup",
+    "tool": "warehouse_lookup",
+    "po_id": "PO-PG104",
+    "file": "EV-PG104-warehouse_lookup.json",
+    "sha256": "25e027db5f3a0f52e231e52a8dc8408469e4fcb6487207bebca1f55de755b3e1",
+    "release_required": true
+  },
+  {
+    "evidence_id": "EV-PG106-warehouse_lookup",
+    "tool": "warehouse_lookup",
+    "po_id": "PO-PG106",
+    "file": "EV-PG106-warehouse_lookup.json",
+    "sha256": "49d4633fce55f62ab6f16c670a4a9ed6081d1f89c0ccfc08510ec4421951ec4b",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG107-amendment_lookup",
+    "tool": "amendment_lookup",
+    "po_id": "PO-PG107",
+    "file": "EV-PG107-amendment_lookup.json",
+    "sha256": "54fdd9b9b456a56029176f33368f25a64908db5c5f3de0ebb957523628290aab",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG107-amendment_lookup-CONFLICT",
+    "tool": "amendment_lookup",
+    "po_id": "PO-PG107",
+    "file": "EV-PG107-amendment_lookup-CONFLICT.json",
+    "sha256": "37d6d63b21b97eee5afedefe92717f6fb6ac451bfe8c403ae211bea7b73513a2",
+    "release_required": false
+  },
+  {
+    "evidence_id": "EV-PG109-bank_verification",
+    "tool": "bank_verification",
+    "po_id": "PO-PG109",
+    "file": "EV-PG109-bank_verification.json",
+    "sha256": "2c28acfc7ff87993ab9c102e6f76c002dc20f3d6116c8f0df911fa1fe7355418",
+    "release_required": false
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "evidence_id": "EV-PG109-bank_verification",
+  "source": "vendor_master",
+  "approved_by_role": "finance_controller",
+  "kind": "bank_verification",
+  "approval_status": "approved",
+  "effective_date": "2026-09-30",
+  "po_id": "PO-PG109",
+  "vendor_id": "V-PG109",
+  "item_id": "ITEM-PG109",
+  "payload": {
+    "bank_token": "DEMO-VERIFIED-NEW-BANK"
+  },
+  "note": "Fictional source record. Free text is never used as an instruction."
+}

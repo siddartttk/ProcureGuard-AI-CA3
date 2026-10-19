@@ -1,0 +1,15 @@
+{
+  "evidence_id": "EV-PG102-amendment_lookup",
+  "source": "procurement",
+  "approved_by_role": "procurement_manager",
+  "kind": "po_amendment",
+  "approval_status": "approved",
+  "effective_date": "2026-09-30",
+  "po_id": "PO-PG102",
+  "vendor_id": "V02",
+  "item_id": "ITEM-PG102",
+  "payload": {
+    "unit_price": "120.00"
+  },
+  "note": "Fictional source record. Free text is never used as an instruction."
+}

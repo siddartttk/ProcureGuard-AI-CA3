@@ -1,0 +1,550 @@
+{
+  "frozen_at": "2026-10-19T16:57:37.128945+00:00",
+  "purpose": "Frozen development challenge, not held-out or field data",
+  "target_invoice": "C1",
+  "base": {
+    "vendors": [
+      {
+        "vendor_id": "VC",
+        "name": "Fictional Cedar Works",
+        "status": "active",
+        "bank_token": "DEMO-CEDAR"
+      }
+    ],
+    "purchase_orders": [
+      {
+        "po_id": "POC",
+        "vendor_id": "VC",
+        "item_id": "IC",
+        "quantity": "12",
+        "unit_price": "25.00",
+        "currency": "INR"
+      }
+    ],
+    "goods_receipts": [
+      {
+        "grn_id": "GC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "12"
+      }
+    ],
+    "invoices": [
+      {
+        "invoice_id": "C1",
+        "invoice_number": "DEMO-C1",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "submitted"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "name": "clean unfamiliar identifiers",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "ordered capacity equality",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "12"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "300.00"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "unit tolerance equality",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "unit_price",
+          "25.01"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "150.06"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "unit tolerance exceeded",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "unit_price",
+          "25.02"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "150.12"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "line total wrong",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "160.00"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "receipt missing",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "goods_receipts",
+          null,
+          null,
+          []
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "unknown order",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "po_id",
+          "ABSENT"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "unknown vendor",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "vendor_id",
+          "ABSENT"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "bank anomaly",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "bank_token",
+          "DEMO-CHANGED"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "inactive supplier",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "vendors",
+          0,
+          "status",
+          "inactive"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "zero quantity",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "0"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "nonfinite money",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "unit_price",
+          "NaN"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "active peer exhausts capacity",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "submitted"
+      },
+      "fault": null
+    },
+    {
+      "name": "recorded peer counts",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "recorded"
+      },
+      "fault": null
+    },
+    {
+      "name": "rejected peer does not count",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "rejected"
+      },
+      "fault": null
+    },
+    {
+      "name": "cancelled peer does not count",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "cancelled"
+      },
+      "fault": null
+    },
+    {
+      "name": "duplicate copy does not count",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "duplicate"
+      },
+      "fault": null
+    },
+    {
+      "name": "superseded peer does not count",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "quantity",
+          "7"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "175.00"
+        ]
+      ],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "superseded"
+      },
+      "fault": null
+    },
+    {
+      "name": "rejected current submission stays held",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "lifecycle_status",
+          "rejected"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "invalid lifecycle cannot pass",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "lifecycle_status",
+          "paid"
+        ]
+      ],
+      "peer": null,
+      "fault": null
+    },
+    {
+      "name": "active exact duplicate is held",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C1",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "submitted"
+      },
+      "fault": null
+    },
+    {
+      "name": "rejected prior number may be resubmitted",
+      "expected": "READY_FOR_HUMAN_APPROVAL",
+      "changes": [],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C1",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "6",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "rejected"
+      },
+      "fault": null
+    },
+    {
+      "name": "invalid active peer blocks capacity",
+      "expected": "INSUFFICIENT_DATA",
+      "changes": [],
+      "peer": {
+        "invoice_id": "C2",
+        "invoice_number": "DEMO-C2",
+        "vendor_id": "VC",
+        "po_id": "POC",
+        "item_id": "IC",
+        "quantity": "oops",
+        "unit_price": "25.00",
+        "declared_total": "150.00",
+        "currency": "INR",
+        "bank_token": "DEMO-CEDAR",
+        "invoice_date": "2026-10-17",
+        "lifecycle_status": "submitted"
+      },
+      "fault": null
+    },
+    {
+      "name": "corrupt matcher omits price",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "unit_price",
+          "30.00"
+        ],
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "180.00"
+        ]
+      ],
+      "peer": null,
+      "fault": "omit_amounts"
+    },
+    {
+      "name": "corrupt matcher omits arithmetic",
+      "expected": "HOLD_FOR_REVIEW",
+      "changes": [
+        [
+          "invoices",
+          0,
+          "declared_total",
+          "180.00"
+        ]
+      ],
+      "peer": null,
+      "fault": "omit_amounts"
+    }
+  ]
+}

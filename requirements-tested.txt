@@ -1,0 +1,6 @@
+# Exact direct dependency versions used for the recorded validation run.
+# For a fresh reproducible classroom installation: pip install -r requirements-tested.txt
+streamlit==1.55.0
+pandas==2.3.3
+plotly==7.1.0
+pytest==9.1.1
